@@ -8,7 +8,7 @@ namespace Intro.Receiver
 {
     class Program
     {
-        private readonly static string _connectionString = "Endpoint=sb://mirzaevolution.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Xn5Qf/GxGl/2ZNWVQj/MrYGq8J6KuDop6R19MmG4M1Y=";
+        private readonly static string _connectionString = "Endpoint=sb://mirzaevolution21.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=LrtPyL+CWb/1FFtAVgZBpgySsdaEnSQCGjaCaScnphI=";
         private readonly static string _queueName = "introqueue";
         private static QueueClient _queueClient;
 
@@ -40,7 +40,6 @@ namespace Intro.Receiver
             Console.WriteLine($"Error:\n{error.Exception?.Message}");
             return Task.CompletedTask;
         }
-
         private static Task MessageHandler(Message message, CancellationToken cancellationToken)
         {
             string messageContent = Encoding.UTF8.GetString(message.Body);

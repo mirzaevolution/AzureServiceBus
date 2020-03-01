@@ -6,7 +6,7 @@ namespace Intro.Sender
 {
     class Program
     {
-        private readonly static string _connectionString = "Endpoint=sb://mirzaevolution.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Xn5Qf/GxGl/2ZNWVQj/MrYGq8J6KuDop6R19MmG4M1Y=";
+        private readonly static string _connectionString = "Endpoint=sb://mirzaevolution21.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=LrtPyL+CWb/1FFtAVgZBpgySsdaEnSQCGjaCaScnphI=";
         private readonly static string _queueName = "introqueue";
         private static QueueClient _queueClient;
 
@@ -41,10 +41,20 @@ namespace Intro.Sender
         }
         static void Main(string[] args)
         {
-            string message = string.Empty;
-            Console.Write("Enter message: ");
-            message = Console.ReadLine();
-            SendMessage(message).Wait();
+
+            while (true)
+            {
+                string message = string.Empty;
+                Console.Write("Enter message: ");
+                message = Console.ReadLine();
+                if (message.Equals("exit", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    break;
+                }
+                SendMessage(message).Wait();
+
+            }
+            Console.WriteLine("Press [ENTER] to exit");
             Console.ReadLine();
             CloseQueueClient().Wait();
         }

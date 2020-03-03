@@ -56,12 +56,12 @@ namespace Detection.Receiver
             return Task.CompletedTask;
         }
 
-        private static Task MessageHandler(Message message, CancellationToken cancellationToken)
+        private static async Task MessageHandler(Message message, CancellationToken cancellationToken)
         {
             string messageJson = Encoding.UTF8.GetString(message.Body);
             MessagePayload messagePayload = JsonConvert.DeserializeObject<MessagePayload>(messageJson);
             Console.WriteLine($"\nID: {messagePayload.Id}, Message: {messagePayload.Message}");
-            return Task.CompletedTask;
+            await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
     }
 }

@@ -17,13 +17,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Etcs", "Etcs", "{C5158AB1-B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ManageArtefacts", "ManageArtefacts\ManageArtefacts.csproj", "{6E5BD894-4F17-475B-9F88-6DA223837943}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThread.Receiver", "MultiThread.Receiver\MultiThread.Receiver.csproj", "{0C17E562-55FE-442B-A9A4-3A608685CCEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThread.Receiver", "MultiThread.Receiver\MultiThread.Receiver.csproj", "{0C17E562-55FE-442B-A9A4-3A608685CCEE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiThread.BatchSender", "MultiThread.BatchSender\MultiThread.BatchSender.csproj", "{E89A716B-26E8-4208-8175-A7856609A02C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MultiThread.BatchSender", "MultiThread.BatchSender\MultiThread.BatchSender.csproj", "{E89A716B-26E8-4208-8175-A7856609A02C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detection.Sender", "Detection.Sender\Detection.Sender.csproj", "{32CC78C9-EE13-4E02-A5A1-248860436204}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection.Sender", "Detection.Sender\Detection.Sender.csproj", "{32CC78C9-EE13-4E02-A5A1-248860436204}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Detection.Receiver", "Detection.Receiver\Detection.Receiver.csproj", "{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Detection.Receiver", "Detection.Receiver\Detection.Receiver.csproj", "{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TopicSubscriptionRulesDemo", "TopicSubscriptionRulesDemo\TopicSubscriptionRulesDemo.csproj", "{086EBBFA-5552-469D-A670-1E800147684D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{086EBBFA-5552-469D-A670-1E800147684D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{086EBBFA-5552-469D-A670-1E800147684D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{086EBBFA-5552-469D-A670-1E800147684D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{086EBBFA-5552-469D-A670-1E800147684D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -76,6 +82,7 @@ Global
 		{E89A716B-26E8-4208-8175-A7856609A02C} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
 		{32CC78C9-EE13-4E02-A5A1-248860436204} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
 		{01AEE6DB-C166-49A0-BB12-AECF72AB3D8F} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
+		{086EBBFA-5552-469D-A670-1E800147684D} = {B6EBB01B-243B-455E-ABBF-269E86EA717C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EA65350-AC28-4F8D-BF0B-F542B1EEF655}

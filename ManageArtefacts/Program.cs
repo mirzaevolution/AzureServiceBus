@@ -155,6 +155,7 @@ namespace ManageArtefacts
         }
         static async Task GetSubscriptions(string topicName)
         {
+
             if (await _managementClient.TopicExistsAsync(topicName))
             {
                 IEnumerable<SubscriptionDescription> subscriptions =
@@ -169,7 +170,7 @@ namespace ManageArtefacts
         {
             //GetQueue("introqueue").Wait();
             //CreateQueue("queueone").Wait();
-            //GetQueues().Wait();
+            GetQueues().Wait();
 
 
             //GetTopic("ChatTopic").Wait();
@@ -177,7 +178,7 @@ namespace ManageArtefacts
             //GetTopics().Wait();
 
             //CreateSubscription("ChatTopic", "raraanjani").Wait();
-            GetSubscriptions("ChatTopic").Wait();
+            //GetSubscriptions("ChatTopic").Wait();
 
             Console.ReadLine();
         }

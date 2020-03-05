@@ -69,28 +69,51 @@ namespace TopicSubscriptionRulesDemo
         {
             Console.WriteLine("Creating subscriptions..");
             //filter by job that ends with leader
-            await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubLeader")
+            if (!await _managementClient.SubscriptionExistsAsync(_topic, "SubLeader"))
             {
-                AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
-            }, new RuleDescription("FilterByLeader", new SqlFilter("job LIKE '%Leader'")));
+                await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubLeader")
+                {
+                    AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
+                }, new RuleDescription("FilterByLeader", new SqlFilter("job LIKE '%Leader'")));
+            }
 
             //filter by salary that is greater than 2500
-            await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubHighSalary")
+            if (!await _managementClient.SubscriptionExistsAsync(_topic, "SubHighSalary"))
             {
-                AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
-            }, new RuleDescription("FilterBySalary", new SqlFilter("salary > 2500")));
+
+                await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubHighSalary")
+                {
+                    AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
+                }, new RuleDescription("FilterBySalary", new SqlFilter("salary > 2500")));
+            }
 
             //filter by job that has title = Software Developer
-            await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubDevJob")
+            if (!await _managementClient.SubscriptionExistsAsync(_topic, "SubDevJob"))
             {
-                AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
-            }, new RuleDescription("FilterByDevJob", new CorrelationFilter("Software Developer")));
+                await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubDevJob")
+                {
+                    AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
+                }, new RuleDescription("FilterByDevJob", new CorrelationFilter("Software Developer")));
+            }
 
             //filter by job that has title = Software Tester
-            await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubTesterJob")
+            if (!await _managementClient.SubscriptionExistsAsync(_topic, "SubTesterJob"))
             {
-                AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
-            }, new RuleDescription("FilterByTesterJob", new CorrelationFilter { Label = "Software Tester" }));
+                await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, "SubTesterJob")
+                {
+                    AutoDeleteOnIdle = TimeSpan.FromMinutes(30)
+                }, new RuleDescription("FilterByTesterJob", new CorrelationFilter { Label = "Software Tester" }));
+
+            }
+
+
+            //Wire-Tap
+            await _managementClient.CreateSubscriptionAsync(new SubscriptionDescription(_topic, $"wire-{Guid.NewGuid().ToString()}")
+            {
+                AutoDeleteOnIdle = TimeSpan.FromMinutes(30),
+
+            });
+
             Console.WriteLine("Done.\n");
         }
         static async Task SendMessages()
@@ -135,7 +158,6 @@ namespace TopicSubscriptionRulesDemo
             }
 
         }
-
         private static Task GlobalErrorHandler(ExceptionReceivedEventArgs error)
         {
             Console.WriteLine("\nError:");
@@ -146,7 +168,6 @@ namespace TopicSubscriptionRulesDemo
             Console.WriteLine(error.Exception.ToString());
             return Task.CompletedTask;
         }
-
         static async Task Init()
         {
             await CreateSubscriptions();

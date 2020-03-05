@@ -73,6 +73,11 @@ namespace SessionDuplicateDetection.Sender
                 string messageJson = JsonConvert.SerializeObject(item);
                 byte[] messageBytes = Encoding.UTF8.GetBytes(messageJson);
 
+
+                //If we set the partitioning with session,
+                //don't forget to set session id and partition key
+                //with same value!
+
                 messages.Add(new Message(messageBytes)
                 {
                     MessageId = item.Id,

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29519.87
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queues", "Queues", "{EB387BB3-FE99-46B7-B42D-866B66D8488C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishSubscribes", "PublishSubscribes", "{B6EBB01B-243B-455E-ABBF-269E86EA717C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Topics", "Topics", "{B6EBB01B-243B-455E-ABBF-269E86EA717C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intro.Sender", "Intro.Sender\Intro.Sender.csproj", "{2401EA34-6BBB-486B-A26A-4EF3D605C7E0}"
 EndProject
@@ -37,13 +37,25 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReqV1.Client", "ReqV1.Clien
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReqV1.Server", "ReqV1.Server\ReqV1.Server.csproj", "{F8A89360-07A8-47D6-B2B0-73811DCED56A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReqV1.Client.Desktop", "ReqV1.Client.Desktop\ReqV1.Client.Desktop.csproj", "{008798B6-EEFF-4F59-9B96-27B4BB9F5B6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReqV1.Client.Desktop", "ReqV1.Client.Desktop\ReqV1.Client.Desktop.csproj", "{008798B6-EEFF-4F59-9B96-27B4BB9F5B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadLetterAbandon.Client", "DeadLetterAbandon.Client\DeadLetterAbandon.Client.csproj", "{3096792C-23A1-470E-93DF-9C7AFABFCB2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeadLetterAbandon.Client", "DeadLetterAbandon.Client\DeadLetterAbandon.Client.csproj", "{3096792C-23A1-470E-93DF-9C7AFABFCB2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadLetterAbandon.Server", "DeadLetterAbandon.Server\DeadLetterAbandon.Server.csproj", "{DB0E9DBB-578D-4A75-ABFC-73CB942B815D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeadLetterAbandon.Server", "DeadLetterAbandon.Server\DeadLetterAbandon.Server.csproj", "{DB0E9DBB-578D-4A75-ABFC-73CB942B815D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeadLetterAbandon.ServerDeadLetterHandler", "DeadLetterAbandon.ServerDeadLetterHandler\DeadLetterAbandon.ServerDeadLetterHandler.csproj", "{50760AF9-6EAA-4A82-A870-BD35DDDA08D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DeadLetterAbandon.ServerDeadLetterHandler", "DeadLetterAbandon.ServerDeadLetterHandler\DeadLetterAbandon.ServerDeadLetterHandler.csproj", "{50760AF9-6EAA-4A82-A870-BD35DDDA08D3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceBusSecurity", "ServiceBusSecurity\ServiceBusSecurity.csproj", "{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Functions", "Functions", "{C59F2A2E-0DEA-49DC-A90A-254074A8F954}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzFuncTriggerV1", "AzFuncTriggerV1\AzFuncTriggerV1.csproj", "{FE405657-9EA3-4559-B55E-8218DD751DE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Queues", "Queues", "{049876E8-E57F-4438-B8E4-C117BB1D68D7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionQueue.Sender", "TransactionQueue.Sender\TransactionQueue.Sender.csproj", "{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransactionQueue.Listener", "TransactionQueue.Listener\TransactionQueue.Listener.csproj", "{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +131,22 @@ Global
 		{50760AF9-6EAA-4A82-A870-BD35DDDA08D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50760AF9-6EAA-4A82-A870-BD35DDDA08D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50760AF9-6EAA-4A82-A870-BD35DDDA08D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE405657-9EA3-4559-B55E-8218DD751DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE405657-9EA3-4559-B55E-8218DD751DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE405657-9EA3-4559-B55E-8218DD751DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE405657-9EA3-4559-B55E-8218DD751DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -142,6 +170,11 @@ Global
 		{3096792C-23A1-470E-93DF-9C7AFABFCB2B} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
 		{DB0E9DBB-578D-4A75-ABFC-73CB942B815D} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
 		{50760AF9-6EAA-4A82-A870-BD35DDDA08D3} = {EB387BB3-FE99-46B7-B42D-866B66D8488C}
+		{FCE0C0C2-BCB9-410F-BFBF-7A15DA168E40} = {B6EBB01B-243B-455E-ABBF-269E86EA717C}
+		{FE405657-9EA3-4559-B55E-8218DD751DE4} = {049876E8-E57F-4438-B8E4-C117BB1D68D7}
+		{049876E8-E57F-4438-B8E4-C117BB1D68D7} = {C59F2A2E-0DEA-49DC-A90A-254074A8F954}
+		{3601F8B6-0E60-49E5-9452-2DD67A7BF0E7} = {049876E8-E57F-4438-B8E4-C117BB1D68D7}
+		{8F7E0DE6-1D37-455D-BDBE-5E906FCE68F5} = {049876E8-E57F-4438-B8E4-C117BB1D68D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EA65350-AC28-4F8D-BF0B-F542B1EEF655}

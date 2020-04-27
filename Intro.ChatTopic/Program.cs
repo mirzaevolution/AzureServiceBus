@@ -24,7 +24,7 @@ namespace Intro.ChatTopic
                 _userName = userName;
                 if (!await _managementClient.TopicExistsAsync(_topicName))
                 {
-                    await _managementClient.CreateTopicAsync(_topicName);
+                    await _managementClient.CreateTopicAsync(new TopicDescription(_topicName) { AutoDeleteOnIdle = TimeSpan.FromMinutes(6) });
 
                 }
                 if (!await _managementClient.SubscriptionExistsAsync(_topicName, userName))
@@ -38,7 +38,7 @@ namespace Intro.ChatTopic
 
                 }
                 TopicClient topicClient = new TopicClient(_connectionString, _topicName);
-                SubscriptionClient subscriptionClient = new SubscriptionClient(_connectionString, _topicName, userName); ;
+                SubscriptionClient subscriptionClient = new SubscriptionClient(_connectionString, _topicName, userName);
                 subscriptionClient.RegisterMessageHandler(MessageHandler, ExceptionHandler);
                 Message message = new Message(Encoding.UTF8.GetBytes($"Entering chat..."));
                 message.Label = userName;

@@ -5,17 +5,39 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 using Microsoft.Azure.ServiceBus.Management;
-namespace DeadLetterAbandon.Server
+
+namespace Rewind.DeadLetter.Queue.Receiver
 {
     class Program
     {
         private static string _connectionString = "Endpoint=sb://mirzaevolution-21.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=3hGIA7ykTK3Ryj2/dGnu9XcQvaGLwbeyvZe0gMcjH44=";
-
-        private static string _queueName = "corequeue0";
+        private static string _queueName = "corequeue1";
         private static QueueClient _queueClient;
+        private static ManagementClient _managementClient;
+        static void Init()
+        {
+            try
+            {
+                _managementClient = new ManagementClient(_connectionString);
+                if (!_managementClient.QueueExistsAsync(_queueName).Result)
+                {
+                    _managementClient.CreateQueueAsync(new QueueDescription(_queueName)
+                    {
+                        AutoDeleteOnIdle = TimeSpan.FromHours(1),
+                        EnableDeadLetteringOnMessageExpiration = true
+                    }).Wait();
+                }
+                _queueClient = new QueueClient(_connectionString, _queueName);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+        }
         static Program()
         {
-            _queueClient = new QueueClient(_connectionString, _queueName);
+            Init();
         }
         private static void InitQueue()
         {
@@ -44,7 +66,7 @@ namespace DeadLetterAbandon.Server
         private static async Task MessageHandler(Message message, CancellationToken cancellationToken)
         {
             string messageText = Encoding.UTF8.GetString(message.Body);
-            Console.Write($"[MaxDeliveryCount:{message.SystemProperties.DeliveryCount}]");
+            Console.Write($"[DeliveryCount: {message.SystemProperties.DeliveryCount}]");
             if (messageText.Contains("abandon", StringComparison.InvariantCultureIgnoreCase))
             {
                 Console.WriteLine(" - Message abandoned");
@@ -61,7 +83,6 @@ namespace DeadLetterAbandon.Server
                 await _queueClient.CompleteAsync(message.SystemProperties.LockToken);
             }
         }
-
         static void Main(string[] args)
         {
             InitQueue();
